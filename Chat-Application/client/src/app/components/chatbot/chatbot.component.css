@@ -1,0 +1,37 @@
+.chat-message-show-container {
+  background-color: #bbb8b8;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: auto;
+}
+
+.chat-message-show-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-messages-create-container {
+  /* background: #616161; */
+  /* height: 100px; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+input {
+  padding: 12px;
+  margin: 25px 30px;
+  flex: 2;
+}
+
+button {
+  height: 35px;
+  margin: auto;
+  width: 50px;
+}

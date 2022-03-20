@@ -1,0 +1,10 @@
+<div class="chat-message">
+    <div class="chat-message-show-container">
+        <ul id="messageList" class="chat-message-show-list"></ul>
+
+        <div class="chat-messages-create-container">
+            <input type="text" [value]="message" class="chat-messages-create-container">
+            <button class="chat-message-create-button" (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
