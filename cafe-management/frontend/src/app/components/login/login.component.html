@@ -1,0 +1,33 @@
+<mat-toolbar class="primary">
+    <mat-toolbar-row fxLayouts="row">
+        <span class="title-center">Signup</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="loginForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" required>
+                <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                    <span *ngIf="loginForm.controls.email.errors.required">This field is required</span>
+                    <span *ngIf="loginForm.controls.email.errors.pattern">Invalid email</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Password</mat-label>
+                <input ttype="password" matInput formControlName="password" required>
+                <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                    <span *ngIf="loginForm.controls.password.errors.required">This field is required</span>
+                    <span *ngIf="loginForm.controls.password.errors.pattern">Invalid password</span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type="submit" (click)="handelLogin()">Login</button>
+    <button mat-raised-button color="primary" mat-dialog-close>close</button>
+</mat-dialog-actions>
