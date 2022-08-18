@@ -23,5 +23,11 @@ signIn(data: any) {
       headers:new HttpHeaders().set('Content-Type','application/json')
     });
   }
-  
+
+  changePassword(data:any){
+    return this.httpclient.post(`${GlobalConstant.APIURL}/user/changepassword`, data,{
+      headers:new HttpHeaders().set('Content-Type','application/json')
+    });
+  }
+
 }

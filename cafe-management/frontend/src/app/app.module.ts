@@ -18,6 +18,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const ngxUiLoderConfig = {
   text: 'Loading...',
@@ -43,6 +44,7 @@ const ngxUiLoderConfig = {
     SignupComponent,
     ForgotpasswordComponent,
     LoginComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,7 +21,6 @@ router.get('/details', authenticationToken, async (req, res) => {
     query = "SELECT count(id) as productCount from products";
     connection.query(query, (err, results) => {
         if (!err) {
-            console.log(results[0].productCount);
             productCount = results[0].productCount;
         } else {
             return res.status(500).json({ message: "Something went wrong" });
