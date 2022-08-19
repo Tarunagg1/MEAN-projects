@@ -1,0 +1,22 @@
+<mat-card>
+  <b><span>Manage category</span></b>
+  <button mat-flat-button color="primary" class="float-right" (click)="AddCategoryAction()">Add category</button>
+</mat-card>
+
+<hr>
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Filter</mat-label>
+    <input matInput type="text" placeholder="search" (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+</mat-card>
+<hr>
+
+<div class="responsive_table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevantion-z8">
+      <ng-container matColumnDef="name">
+
+      </ng-container>
+  </table>
+</div>
+

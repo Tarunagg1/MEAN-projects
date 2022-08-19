@@ -34,7 +34,6 @@ export class AuthGuard implements CanActivate {
 
     expectedRoleArray = expectedRoleArray.expectedRole;
     const token: any = localStorage.getItem('token');
-    console.log(token);
 
     let tokenPayload: any;
 
@@ -53,7 +52,7 @@ export class AuthGuard implements CanActivate {
       }
     }
 
-    if (tokenPayload.role == 'user' || tokenPayload.role == 'admin') {
+    if (tokenPayload.role === 'user' || tokenPayload.role === 'admin') {
       if (this.auth.isAuthenticated() && checkRole) {
         return true;
       }

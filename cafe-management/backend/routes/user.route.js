@@ -128,10 +128,12 @@ router.get('/checkToken', authenticationToken, async (req, res) => {
 
 router.post('/changepassword', authenticationToken, async (req, res) => {
     const email = req.locals.email;
+
     const { oldpassword, newpassword } = req.body;
 
-    let query = "SELECT * from users WHERE email=? AND passwors=?";
+    let query = "SELECT * from users WHERE email=? AND password=?";
     connection.query(query, [email, oldpassword], (err, resp) => {
+        console.log(err);
         if (!err) {
             if (resp.length <= 0) {
                 return res.status(404).json({ message: "incorrect oldpassword" });
