@@ -46,7 +46,7 @@ router.post('/signin', async (req, res) => {
                 // check password
                 if (resp[0].password === password) {
                     const payLoad = { email: resp[0].email, role: resp[0].role };
-                    const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: '8h' });
+                    const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: '1d' });
 
                     return res.status(200).json({ message: "login successfully", token });
                 } else if (resp[0].status === 'false') {

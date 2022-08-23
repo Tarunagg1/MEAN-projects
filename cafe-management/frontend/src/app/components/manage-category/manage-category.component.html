@@ -15,7 +15,8 @@
 <div class="responsive_table">
   <table mat-table [dataSource]="dataSource" class="mat-elevantion-z8">
       <ng-container matColumnDef="name">
-
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td maat-cell *matCellDef="let element">{{element.name}}</td>
       </ng-container>
   </table>
 </div>
