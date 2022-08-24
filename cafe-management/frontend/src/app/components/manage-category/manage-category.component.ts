@@ -31,7 +31,11 @@ export class ManageCategoryComponent implements OnInit {
     this.categoryService.getCategory().subscribe(
       (response: any) => {
         this.responseMsg = response?.message;
-        this.dataSource = new MatTableDataSource(response);
+        console.log(response.data);
+
+        // console.log(this.dataSource);
+        this.dataSource = response.data;
+
       },
       (error: any) => {
         if (error?.error?.message) {
@@ -51,6 +55,8 @@ export class ManageCategoryComponent implements OnInit {
 
 
   AddCategoryAction(){
-    
+
   }
+
+  handelEditAction(){}
 }
