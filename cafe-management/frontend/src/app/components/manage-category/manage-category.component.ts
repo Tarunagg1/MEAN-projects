@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { SnakebarservicesService } from 'src/app/services/snakebarservices.service';
 import { GlobalConstant } from 'src/app/shared/global-constant';
+import { CatgoryComponent } from '../catgory/catgory.component';
 
 @Component({
   selector: 'app-manage-category',
@@ -35,7 +36,6 @@ export class ManageCategoryComponent implements OnInit {
 
         // console.log(this.dataSource);
         this.dataSource = response.data;
-
       },
       (error: any) => {
         if (error?.error?.message) {
@@ -53,10 +53,38 @@ export class ManageCategoryComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-  AddCategoryAction(){
-
+  AddCategoryAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'Add',
+    };
+    dialogConfig.width = '850px';
+    const dialogRef = this.dialog.open(CatgoryComponent, dialogConfig);
+    this.router.events.subscribe((event) => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 
-  handelEditAction(){}
+  handelEditAction(value: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      id:value,
+      action: 'Edit',
+    };
+    dialogConfig.width = '850px';
+    const dialogRef = this.dialog.open(CatgoryComponent, dialogConfig);
+    this.router.events.subscribe((event) => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
+  }
 }
