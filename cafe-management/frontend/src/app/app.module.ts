@@ -21,6 +21,7 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 import { CatgoryComponent } from './components/catgory/catgory.component';
+import { ManageProductComponent } from './components/manage-product/manage-product.component';
 
 const ngxUiLoderConfig = {
   text: 'Loading...',
@@ -49,6 +50,7 @@ const ngxUiLoderConfig = {
     ChangePasswordComponent,
     ManageCategoryComponent,
     CatgoryComponent,
+    ManageProductComponent,
   ],
   imports: [
     BrowserModule,

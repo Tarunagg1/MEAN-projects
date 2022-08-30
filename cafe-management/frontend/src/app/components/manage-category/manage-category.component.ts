@@ -32,9 +32,6 @@ export class ManageCategoryComponent implements OnInit {
     this.categoryService.getCategory().subscribe(
       (response: any) => {
         this.responseMsg = response?.message;
-        console.log(response.data);
-
-        // console.log(this.dataSource);
         this.dataSource = response.data;
       },
       (error: any) => {

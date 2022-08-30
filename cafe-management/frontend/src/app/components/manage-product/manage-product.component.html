@@ -1,0 +1,43 @@
+<mat-card>
+  <b><span>Manage Product</span></b>
+  <button mat-flat-button color="primary" class="float-right" (click)="AddProductAction()">Add Product</button>
+</mat-card>
+
+<hr>
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Filter</mat-label>
+    <input matInput type="text" placeholder="search" (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+</mat-card>
+<hr>
+
+<div class="responsive_table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">category Id</th>
+        <th scope="col">category Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ele of dataSource">
+        <td>{{ele.categoryId}}</td>
+        <td>{{ele.categoryName}}</td>
+        <td>{{ele.description}}</td>
+        <td>{{ele.name}}</td>
+        <td>{{ele.price}}</td>
+        <td>
+          <button mat-icon-button color="primary" matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
