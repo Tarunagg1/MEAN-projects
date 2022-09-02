@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { SnakebarservicesService } from 'src/app/services/snakebarservices.service';
 import { Router } from '@angular/router';
 import { GlobalConstant } from 'src/app/shared/global-constant';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-manage-product',
@@ -31,14 +32,27 @@ export class ManageProductComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  AddProductAction() {}
+  AddProductAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'Add',
+    };
+    dialogConfig.width = '850px';
+    const dialogRef = this.dialog.open(ProductComponent, dialogConfig);
+    this.router.events.subscribe((event) => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
+  }
 
   tableData() {
     this.productService.getProduct().subscribe(
       (response: any) => {
         this.responseMsg = response?.message;
-        console.log(response.data);
-
         this.dataSource = response.data;
       },
       (error: any) => {
@@ -59,14 +73,14 @@ export class ManageProductComponent implements OnInit {
       action: 'Edit',
     };
     dialogConfig.width = '850px';
-    // const dialogRef = this.dialog.open(CatgoryComponent, dialogConfig);
-    // this.router.events.subscribe((event) => {
-    //   dialogRef.close();
-    // });
-    // const sub = dialogRef.componentInstance.onAddCategory.subscribe(
-    //   (response) => {
-    //     this.tableData();
-    //   }
-    // );
+    const dialogRef = this.dialog.open(ProductComponent, dialogConfig);
+    this.router.events.subscribe((event) => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 }

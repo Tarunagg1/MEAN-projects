@@ -32,7 +32,7 @@
         <td>{{ele.name}}</td>
         <td>{{ele.price}}</td>
         <td>
-          <button mat-icon-button color="primary" matTooltip="Edit">
+          <button (click)="handelEditAction(ele)" mat-icon-button color="primary" matTooltip="Edit">
             <mat-icon>edit</mat-icon>
           </button>
         </td>

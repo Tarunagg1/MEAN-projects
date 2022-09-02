@@ -22,6 +22,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 import { CatgoryComponent } from './components/catgory/catgory.component';
 import { ManageProductComponent } from './components/manage-product/manage-product.component';
+import { ProductComponent } from './components/product/product.component';
 
 const ngxUiLoderConfig = {
   text: 'Loading...',
@@ -51,6 +52,7 @@ const ngxUiLoderConfig = {
     ManageCategoryComponent,
     CatgoryComponent,
     ManageProductComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
