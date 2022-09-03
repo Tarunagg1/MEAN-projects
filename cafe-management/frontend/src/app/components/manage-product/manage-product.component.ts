@@ -42,7 +42,7 @@ export class ManageProductComponent implements OnInit {
     this.router.events.subscribe((event) => {
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
+    const sub = dialogRef.componentInstance.onAddProduct.subscribe(
       (response) => {
         this.tableData();
       }
@@ -69,7 +69,7 @@ export class ManageProductComponent implements OnInit {
   handelEditAction(value: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
-      id:value,
+      id: value,
       action: 'Edit',
     };
     dialogConfig.width = '850px';
@@ -77,7 +77,7 @@ export class ManageProductComponent implements OnInit {
     this.router.events.subscribe((event) => {
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
+    const sub = dialogRef.componentInstance.onEditProduct.subscribe(
       (response) => {
         this.tableData();
       }

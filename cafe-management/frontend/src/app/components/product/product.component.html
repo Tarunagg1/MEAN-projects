@@ -11,38 +11,28 @@
       <mat-form-field appearance="fill" fxFlex>
         <mat-label>Product name</mat-label>
         <input type="text" matInput formControlName="name" required>
-        <mat-error *ngIf="productForm.controls.name.touched">
+        <!-- <mat-error *ngIf="productForm.controls.name.touched">
           <span *ngIf="productForm.controls.name.errors.required">This field is required</span>
           <span *ngIf="productForm.controls.name.errors.pattern">Invalid name</span>
-        </mat-error>
+        </mat-error> -->
       </mat-form-field>
 
       <mat-form-field appearance="fill" fxFlex>
         <mat-label>Category</mat-label>
         <mat-select matInput formControlName="categoryId" required>
-            <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
         </mat-select>
-        <mat-error *ngIf="productForm.controls.name.touched">
-          <span *ngIf="productForm.controls.categoryId.errors.required">This field is required</span>
-        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" fxFlex>
-        <mat-label>Price</mat-label>
+        <mat-label>Product price</mat-label>
         <input type="text" matInput formControlName="price" required>
-        <mat-error *ngIf="productForm.controls.price.touched">
-          <span *ngIf="productForm.controls.price.errors.required">This field is required</span>
-        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" fxFlex>
         <mat-label>description</mat-label>
         <input type="text" matInput formControlName="description" required>
-        <mat-error *ngIf="productForm.controls.description.touched">
-          <span *ngIf="productForm.controls.description.errors.required">This field is required</span>
-        </mat-error>
       </mat-form-field>
-
     </div>
   </form>
 </mat-dialog-content>

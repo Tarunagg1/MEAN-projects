@@ -12,8 +12,8 @@ import { GlobalConstant } from 'src/app/shared/global-constant';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  onAddCategory = new EventEmitter();
-  onEditCategory = new EventEmitter();
+  onAddProduct = new EventEmitter();
+  onEditProduct = new EventEmitter();
 
   productForm: any;
   responseMsg: any;
@@ -34,10 +34,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      name: [
-        null,
-        [Validators.required],
-      ],
+      name: [null, [Validators.required]],
       categoryId: [null, [Validators.required]],
       price: [null, [Validators.required]],
       description: [null, [Validators.required]],
@@ -53,8 +50,6 @@ export class ProductComponent implements OnInit {
   }
 
   handelSubmit() {
-    console.log(this.dialogData);
-
     if (this.action === 'Add') {
       this.addProduct();
     } else if (this.action === 'Update') {
@@ -64,19 +59,18 @@ export class ProductComponent implements OnInit {
 
   addProduct() {
     const formData = this.productForm.value;
-    console.log(formData);
-    return;
+
     const data = {
       name: formData.name,
       categoryId: formData.categoryId,
       price: formData.price,
-      description: formData.description
+      description: formData.description,
     };
 
     this.productService.addProduct(data).subscribe(
       (response: any) => {
         this.dialogRef.close();
-        // this.onAddCategory.emit();
+        this.onAddProduct.emit();
         this.responseMsg = response?.message;
         this.snakeBarService.openSnakeBar(this.responseMsg, '');
         // this.router.navigate(['/cafe/dashboard']);
@@ -116,15 +110,18 @@ export class ProductComponent implements OnInit {
     const data = {
       id: this.dialogData.id.id,
       name: formData.name,
+      categoryId: formData.categoryId,
+      price: formData.price,
+      description: formData.description,
     };
+
 
     this.productService.updateProduct(data).subscribe(
       (response: any) => {
         this.dialogRef.close();
-        this.onEditCategory.emit();
+        this.onEditProduct.emit();
         this.responseMsg = response?.message;
         this.snakeBarService.openSnakeBar(this.responseMsg, '');
-        // this.router.navigate(['/cafe/dashboard']);
       },
       (error: any) => {
         if (error?.error?.message) {
